@@ -1,0 +1,93 @@
+﻿<VerticalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:converters="clr-namespace:JinjuWeather.Converters"
+                     x:Class="JinjuWeather.Controls.Next7DWidget">
+
+    <VerticalStackLayout.Resources>
+        <converters:TempSpanConverter x:Key="TempSpanConverter"/>
+        <converters:MaxTempOffsetConverter x:Key="MaxTempOffsetConverter"/>
+        <converters:MinTempOffsetConverter x:Key="MinTempOffsetConverter"/>
+    </VerticalStackLayout.Resources>
+
+    <Label Text="주간날씨"
+           FontAttributes="Bold"
+           FontSize="Subtitle"
+           TextColor="{DynamicResource Primary}"
+           Margin="{OnPlatform Android='15,0', iOS='15,0,15,15'}"/>
+
+    <ScrollView Orientation="Horizontal">
+
+        <HorizontalStackLayout Spacing="12"
+                               Padding="15,0"
+                               BindableLayout.ItemsSource="{Binding Week}">
+
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding DateTime, StringFormat='{0:ddd}'}"
+                               HeightRequest="34"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="{Binding Temperature.Maximum.Value, StringFormat='{0:F0}°'}"
+                               HeightRequest="34"
+                               HorizontalOptions="Center"/>
+
+                        <Image Source="{Binding Day.Phrase, StringFormat='{0:F2}.png'}"
+                               WidthRequest="34"
+                               HeightRequest="34"
+                               HorizontalOptions="Center"/>
+
+                        <BoxView WidthRequest="1"
+                                 HeightRequest="1"
+                                 Margin="{Binding Temperature.Maximum.Value, Converter={StaticResource MaxTempOffsetConverter}}"/>
+
+                        <Label Text="{Binding Temperature.Maximum.Value, StringFormat='{0:F0}°'}"
+                               HorizontalOptions="Center"
+                               HeightRequest="30"/>
+
+                        <BoxView Color="{DynamicResource Primary}"
+                                 WidthRequest="10"
+                                 CornerRadius="5"
+                                 HorizontalOptions="Center">
+
+                            <BoxView.HeightRequest>
+                                <MultiBinding Converter="{StaticResource TempSpanConverter}">
+                                    <Binding Path="Temperature.Minimum.Value" FallbackValue="0"/>
+                                    <Binding Path="Temperature.Maximum.Value" FallbackValue="100"/>
+                                </MultiBinding>
+                            </BoxView.HeightRequest>
+
+                        </BoxView>
+
+                        <Label Text="{Binding Temperature.Minimum.Value, StringFormat='{0:F0}°'}"
+                               HorizontalOptions="Center"
+                               HeightRequest="30"/>
+
+                        <BoxView WidthRequest="1"
+                                 HeightRequest="1"
+                                 Margin="{Binding Temperature.Minimum.Value, Converter={StaticResource MinTempOffsetConverter}}"/>
+
+                        <StackLayout Orientation="Horizontal"
+                                     HeightRequest="40"
+                                     HorizontalOptions="Center">
+
+                            <Image Source="sm_solid_umbrella.png"
+                                   WidthRequest="16"
+                                   HeightRequest="16"
+                                   VerticalOptions="Center"/>
+
+                            <Label Text="13%"
+                                   class="SubContent"
+                                   VerticalOptions="Center"/>
+
+                        </StackLayout>
+
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+
+        </HorizontalStackLayout>
+
+    </ScrollView>
+
+</VerticalStackLayout>

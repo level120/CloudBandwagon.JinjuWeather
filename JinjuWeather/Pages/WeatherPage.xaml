@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:JinjuWeather.ViewModels"
+             xmlns:controls="clr-namespace:JinjuWeather.Controls"
+             x:Class="JinjuWeather.Pages.WeatherPage"
+             x:DataType="viewmodels:WeatherPageViewModel">
+
+    <ScrollView Grid.Column="0">
+        <VerticalStackLayout Padding="0,50"
+                             Spacing="{OnPlatform Android=25, iOS=50}">
+
+            <controls:CurrentWidget />
+
+            <controls:Next24HrWidget BindingContext="{Binding}"/>
+            <controls:Next7DWidget BindingContext="{Binding}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+

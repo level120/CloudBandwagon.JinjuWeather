@@ -4,13 +4,41 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:JinjuWeather.Pages"
-    xmlns:local="clr-namespace:JinjuWeather"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:viewmodels="clr-namespace:JinjuWeather.ViewModels"
+    xmlns:controls="clr-namespace:JinjuWeather.Controls"
+    x:DataType="viewmodels:ShellViewModel"
+    Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate pages:WelcomePage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <controls:BandwagonFlyoutHeader />
+    </Shell.FlyoutHeader>
 
+    <ShellContent Title="클라우드 유랑단 - 진주편!"
+                  ContentTemplate="{DataTemplate pages:WelcomePage}"
+                  Route="WelcomePage"
+                  FlyoutItemIsVisible="False"/>
+
+    <ShellContent Title="일기예보"
+                  Icon="weather.png"
+                  ContentTemplate="{DataTemplate pages:WeatherPage}"
+                  Route="WeatherPage" />
+
+    <MenuItem Text="프로젝트"
+              IconImageSource="github.png"
+              Command="{Binding OpenBrowserCommand}"
+              CommandParameter="https://github.com/level120/CloudBandwagon.JinjuWeather"/>
+
+    <MenuItem Text="릴리즈"
+              IconImageSource="code.png"
+              Command="{Binding OpenBrowserCommand}"
+              CommandParameter="https://github.com/level120/CloudBandwagon.JinjuWeather/releases"/>
+
+    <ShellContent Title="앱 정보"
+                  Icon="about.png"
+                  ContentTemplate="{DataTemplate pages:AboutPage}"/>
+
+    <Shell.FlyoutFooter>
+        <controls:BandwagonFlyoutFooter />
+    </Shell.FlyoutFooter>
 </Shell>
 

@@ -1,4 +1,5 @@
-﻿using JinjuWeather.Extensions;
+﻿using CommunityToolkit.Maui;
+using JinjuWeather.Extensions;
 
 namespace JinjuWeather;
 
@@ -10,12 +11,17 @@ public static class MauiProgram
 
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigurePages()
             .ConfigureViewModels()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("NotoSansKR-Black.otf", "NotoSansBlack");
+                fonts.AddFont("NotoSansKR-Bold.otf", "NotoSansBold");
+                fonts.AddFont("NotoSansKR-Light.otf", "NotoSansLight");
+                fonts.AddFont("NotoSansKR-Medium.otf", "NotoSansMedium");
+                fonts.AddFont("NotoSansKR-Regular.otf", "NotoSansRegular");
+                fonts.AddFont("NotoSansKR-Thin.otf", "NotoSansThin");
             });
 
         return builder.Build();

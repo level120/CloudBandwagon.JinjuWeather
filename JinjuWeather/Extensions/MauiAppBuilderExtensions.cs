@@ -20,7 +20,7 @@ public static class MauiAppBuilderExtensions
 
         foreach (var page in pageEnumerable)
         {
-            builder.Services.AddTransient(page);
+            builder.Services.AddSingleton(page);
         }
 
         return builder;
@@ -40,7 +40,7 @@ public static class MauiAppBuilderExtensions
 
         foreach (var page in pageEnumerable)
         {
-            builder.Services.AddTransient(page);
+            builder.Services.AddSingleton(page);
         }
 
         return builder;

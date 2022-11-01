@@ -1,0 +1,24 @@
+﻿<VerticalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     Spacing="{OnPlatform iOS=3, Android=-27}"
+                     x:Class="JinjuWeather.Controls.CurrentWidget">
+
+    <Label Text="진주시"
+           FontSize="Subtitle"
+           HorizontalOptions="Center"/>
+
+    <Label Text="8°C"
+           FontSize="Title"
+           FontAttributes="Bold"
+           TextColor="{DynamicResource Primary}"
+           HorizontalOptions="Center"/>
+    
+    <Label Text="청명함"
+           FontSize="Medium"
+           HorizontalOptions="Center"/>
+    
+    <Label Text="최고:16° 최저:13°"
+           FontSize="Medium"
+           HorizontalOptions="Center"/>
+
+</VerticalStackLayout>

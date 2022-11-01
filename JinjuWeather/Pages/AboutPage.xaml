@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:JinjuWeather.ViewModels"
+             x:Class="JinjuWeather.Pages.AboutPage"
+             x:DataType="viewmodels:AboutPageViewModel">
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="NotoSansMedium"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+        <VerticalStackLayout Spacing="25"
+                             Padding="30,0"
+                             VerticalOptions="Center">
+
+            <Image Source="dotnet_bot.png"
+                   HeightRequest="200"
+                   HorizontalOptions="Center" />
+
+            <TableView Intent="Menu"
+                       BackgroundColor="{DynamicResource White}">
+                <TableRoot>
+                    <TableSection Title="Development">
+                        <TextCell Text="APP Name"
+                                  Detail="{Binding ApplicationInfo.Name}" />
+                        <TextCell Text="Package Name"
+                                  Detail="{Binding ApplicationInfo.PackageName}" />
+                        <TextCell Text="App Version"
+                                  Detail="{Binding ApplicationInfo.VersionString}" />
+                        <TextCell Text="Framework"
+                                  Detail=".NET MAUI Workload 6.0.402" />
+                        <TextCell Text="Targets"
+                                  Detail="Android 21+, iOS 14.0+" />
+                        <TextCell Text="Language"
+                                  Detail="C#, XAML" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

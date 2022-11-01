@@ -1,0 +1,37 @@
+﻿<VerticalStackLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                     xmlns:viewmodels="clr-namespace:JinjuWeather.ViewModels"
+                     x:Class="JinjuWeather.Controls.Next24HrWidget">
+
+    <Label Text="시간대"
+           FontAttributes="Bold"
+           FontSize="Subtitle"
+           TextColor="{DynamicResource Primary}"
+           Margin="{OnPlatform Android='15,0', iOS='15,0,15,15'}"/>
+
+    <ScrollView Orientation="Horizontal">
+
+        <HorizontalStackLayout Spacing="12"
+                               Padding="15,0"
+                               BindableLayout.ItemsSource="{Binding Hours}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding DateTime, StringFormat='{0:h tt}'}"
+                               HorizontalOptions="Center"/>
+
+                        <Image Source="{Binding Day.Phrase, StringFormat='{0:F2}.png'}"
+                               WidthRequest="40"
+                               HeightRequest="40"
+                               HorizontalOptions="Center"/>
+
+                        <Label Text="{Binding Temperature.Minimum.Value, StringFormat='{0:F0}°'}"
+                               HorizontalOptions="Center"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </HorizontalStackLayout>
+
+    </ScrollView>
+
+</VerticalStackLayout>

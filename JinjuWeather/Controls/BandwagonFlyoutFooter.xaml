@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="JinjuWeather.Controls.BandwagonFlyoutFooter">
+
+    <StackLayout HeightRequest="50">
+
+        <Label Text="Jinju Weather"
+               TextColor="{DynamicResource Primary}"
+               FontFamily="NotoSansBold"
+               HorizontalOptions="Center" />
+
+        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:yyyy-MM-dd}'}"
+               TextColor="{DynamicResource Primary}"
+               HorizontalOptions="Center" />
+
+    </StackLayout>
+
+</ContentView>
+
