@@ -6,7 +6,7 @@ public class MaxTempOffsetConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        const double max = 90 * 3;
+        const double max = 58 * 3 / 1.8;
 
         var maxTemp = System.Convert.ToDouble(value) * 3;
         var topMargin = max - maxTemp;

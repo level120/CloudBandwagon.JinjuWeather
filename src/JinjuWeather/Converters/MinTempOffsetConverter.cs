@@ -6,7 +6,7 @@ public class MinTempOffsetConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        const double min = 40 * 3;
+        const double min = 8 * 3 / 1.8;
 
         var minTemp = System.Convert.ToDouble(value) * 3;
         var bottomMargin = minTemp - min;
