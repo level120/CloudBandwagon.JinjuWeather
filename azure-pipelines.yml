@@ -57,7 +57,6 @@ stages:
         apksignerKeystoreFile: 'level120.keystore'
         apksignerKeystorePassword: '$(AndroidKeystore.Password)'
         apksignerKeystoreAlias: '$(AndroidKeystore.Alias)'
-        apksignerKeyPassword: '$(AndroidKeystore.Password)'
 
     - task: CopyFiles@2
       inputs:
