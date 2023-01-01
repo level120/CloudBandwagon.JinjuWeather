@@ -51,6 +51,13 @@ stages:
           dotnet build -f net6.0-android -c Release
 
     # Signing Android App : https://docs.microsoft.com/en-us/azure/devops/pipelines/apps/mobile/app-signing?view=azure-devops&tabs=apple-install-during-build#sign-your-android-app
+    - task: AndroidSigning@3
+      inputs:
+        apkFiles: '**/*.apk'
+        apksignerKeystoreFile: 'level120.keystore'
+        apksignerKeystorePassword: '$(AndroidKeystore.Password)'
+        apksignerKeystoreAlias: '$(AndroidKeystore.Alias)'
+        apksignerKeyPassword: '$(AndroidKeystore.Password)'
 
     - task: CopyFiles@2
       inputs:
