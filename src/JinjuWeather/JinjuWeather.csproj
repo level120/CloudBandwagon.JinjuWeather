@@ -10,7 +10,7 @@
 		<ApplicationTitle>Jinju Weather</ApplicationTitle>
 		<ApplicationId>cloud.bandwagon.jinjuweather</ApplicationId>
 		<ApplicationIdGuid>9B5C8181-6F09-4AC1-B8F5-18726F2D9FA8</ApplicationIdGuid>
-		<ApplicationDisplayVersion>0.0.1</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>0.0.2</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
