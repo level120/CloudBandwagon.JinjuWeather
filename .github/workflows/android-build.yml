@@ -1,0 +1,35 @@
+name: MAUI Android Build
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  DOTNETVERSION: 6.0.400
+  CONFIGURATION: Release
+  FRAMEWORK: net6.0-android
+
+jobs:
+  build:
+    runs-on: macos-12
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNETVERSION }}
+
+    - run: |
+        dotnet workload install maui
+
+    - run: |
+        dotnet restore
+
+    - run: |
+        dotnet publish -f ${{ env.FRAMEWORK }} -c ${{ env.CONFIGURATION }}
+
+    - uses: actions/upload-artifact@v3
+      with:
+        path: |
+          src/JinjuWeather/bin/${{ env.CONFIGURATION }}/${{ env.FRAMEWORK }}/publish/**/*.apk
